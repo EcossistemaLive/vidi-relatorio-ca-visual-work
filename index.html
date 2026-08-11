@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ViDi · Relatório do Projeto — Certificação CA · Visual Work</title>
+<title>Live Consultoria · Relatório do Projeto — Certificação CA · Visual Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --gold:#c9a84c; --gold-deep:#a8862f; --black:#0a0a0a; --charcoal:#3d3d3d;
-    --offwhite:#f5f0e8; --lightgray:#ebebeb; --paper:#fbf9f3; --line:#e0d8c8;
+    --live-petroleo:#06192a; --live-verde:#00e800; --gold:#c9a84c; --gold-deep:#a8862f;
+    --black:#06192a; --charcoal:#3d3d3d;
+    --offwhite:#f8f9fa; --lightgray:#ebebeb; --paper:#ffffff; --line:#e0e6ed;
     --ok:#5a7d4f; --ok-bg:#eef3e9; --warn:#b08529; --warn-bg:#f6efdd;
     --urgent:#a23b2e; --urgent-bg:#f6e3df; --na:#8a8577;
   }
@@ -18,25 +19,23 @@
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--offwhite);color:var(--black);
     font-family:'Roboto',system-ui,-apple-system,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4,.serif{font-family:'Playfair Display',Georgia,serif}
+  h1,h2,h3,h4,.titulo{font-family:'Poppins',sans-serif}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
   a{color:var(--gold-deep)}
 
-  header.brand{background:var(--black);color:var(--offwhite);padding:32px 0 26px;text-align:center}
-  header.brand .eagle{width:56px;height:56px}
-  header.brand .wordmark{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:.42em;
-    font-size:27px;text-indent:.42em;margin-top:10px}
-  header.brand .tagline{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:14px;margin-top:2px}
-  .goldrule{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  header.brand{background:var(--live-petroleo);color:#ffffff;padding:28px 0 22px;text-align:center}
+  header.brand .logo-img{max-width:180px;height:auto;margin:0 auto;display:block}
+  header.brand .tagline{font-family:'Poppins',sans-serif;font-style:italic;color:var(--live-verde);font-size:14px;margin-top:8px;letter-spacing:.05em}
+  .goldrule{height:3px;background:linear-gradient(90deg,transparent,var(--live-verde),transparent)}
 
   .doc-head{padding:38px 0 6px;text-align:center}
   .doc-head .eyebrow{color:var(--gold-deep);text-transform:uppercase;letter-spacing:.28em;font-size:11px;font-weight:700}
-  .doc-head h1{font-size:32px;margin:12px 0 8px;line-height:1.2}
+  .doc-head h1{font-size:32px;margin:12px 0 8px;line-height:1.2;color:var(--live-petroleo)}
   .doc-head .meta-line{color:var(--charcoal);font-size:13.5px}
 
   section{padding:26px 0;border-top:1px solid var(--line)}
   section:first-of-type{border-top:none}
-  h2.sec{font-size:23px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+  h2.sec{font-size:23px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;color:var(--live-petroleo)}
   h2.sec .tag{font-size:12px;font-weight:700;color:#fff;background:var(--gold-deep);border-radius:5px;padding:2px 9px;font-family:'Roboto'}
   .sec-sub{color:var(--charcoal);font-size:14px;margin:2px 0 18px}
 
@@ -46,12 +45,12 @@
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
   .card .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-deep);font-weight:700}
-  .card .v{font-family:'Playfair Display',serif;font-size:20px;margin-top:4px}
+  .card .v{font-family:'Poppins',sans-serif;font-size:20px;margin-top:4px;color:var(--live-petroleo);font-weight:600}
   .card .d{font-size:12.5px;color:var(--charcoal);margin-top:2px}
 
   table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13px}
   th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{background:var(--black);color:var(--offwhite);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+  th{background:var(--live-petroleo);color:#ffffff;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
   tr:nth-child(even) td{background:var(--paper)}
   td .clause{font-family:ui-monospace,monospace;font-weight:700;color:var(--gold-deep);font-size:11.5px}
   .tk{font-weight:600}
@@ -62,13 +61,13 @@
   .p-high{color:var(--warn);border-color:#e3cf9c;background:var(--warn-bg)}
   .p-normal{color:var(--ok);border-color:#c7d3bf;background:var(--ok-bg)}
 
-  .listtitle{font-family:'Playfair Display',serif;font-size:18px;margin:22px 0 2px;color:var(--black)}
+  .listtitle{font-family:'Poppins',sans-serif;font-size:18px;margin:22px 0 2px;color:var(--live-petroleo);font-weight:600}
   .listtitle .n{color:var(--gold-deep);font-weight:700}
   .listdesc{font-size:12.5px;color:var(--charcoal);margin:0 0 8px}
 
-  .callout{border-left:3px solid var(--gold);background:var(--paper);border-radius:0 6px 6px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#25211a}
-  .callout.dark{background:#141414;color:#d9d2c4;border-left-color:var(--gold)}
-  .callout.dark b{color:var(--offwhite)}
+  .callout{border-left:3px solid var(--live-verde);background:var(--paper);border-radius:0 6px 6px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#25211a}
+  .callout.dark{background:var(--live-petroleo);color:#d9d2c4;border-left-color:var(--live-verde)}
+  .callout.dark b{color:#ffffff}
   .callout.alert{border-left-color:var(--urgent);background:var(--urgent-bg)}
   .callout b{color:var(--black)}
 
@@ -81,18 +80,18 @@
   ul.clean li{font-size:14px;margin:5px 0}
 
   .btns{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-  .btns a{background:var(--black);color:var(--offwhite);text-decoration:none;border-radius:4px;padding:9px 16px;font-size:13px;font-weight:500}
-  .btns a.ghost{background:transparent;border:1px solid var(--black);color:var(--black)}
+  .btns a{background:var(--live-petroleo);color:#ffffff;text-decoration:none;border-radius:4px;padding:9px 16px;font-size:13px;font-weight:500}
+  .btns a.ghost{background:transparent;border:1px solid var(--live-petroleo);color:var(--live-petroleo)}
 
-  footer{background:var(--black);color:#b8b2a4;margin-top:30px;padding:30px 0;font-size:12.5px}
-  footer .sig{font-family:'Playfair Display',serif;letter-spacing:.35em;text-indent:.35em;color:var(--offwhite);font-size:17px;font-weight:600}
-  footer .sig small{display:block;font-style:italic;letter-spacing:.02em;text-indent:0;color:var(--gold);font-size:12px;margin-top:3px;font-weight:400}
+  footer{background:var(--live-petroleo);color:#b8b2a4;margin-top:30px;padding:30px 0;font-size:12.5px}
+  footer .sig{font-family:'Poppins',sans-serif;letter-spacing:.25em;text-indent:.25em;color:#ffffff;font-size:17px;font-weight:600}
+  footer .sig small{display:block;font-style:italic;letter-spacing:.02em;text-indent:0;color:var(--live-verde);font-size:12px;margin-top:3px;font-weight:400}
+  footer .developer-credit{font-size:0.75rem;opacity:0.6;font-style:italic;text-align:center;margin-top:1.5rem;color:#a0a0a0}
 
   @media print{
     body{background:#fff}
-    header.brand{background:#fff;color:#000;border-bottom:2px solid var(--gold)}
-    header.brand .wordmark{color:#000}
-    th{background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    header.brand{background:#fff;color:#000;border-bottom:2px solid var(--live-verde)}
+    th{background:var(--live-petroleo) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     footer{background:#fff;color:#333} footer .sig{color:#000}
     section{page-break-inside:avoid}
   }
@@ -101,16 +100,15 @@
 <body>
 
 <header class="brand">
-  <img class="eagle" src="assets/vidi-simbolo.svg" alt="ViDi" onerror="this.style.display='none'">
-  <div class="wordmark">VIDI</div>
-  <div class="tagline">Ver antes de vencer</div>
+  <img class="logo-img" src="assets/live-logo.png" alt="Live Consultoria" onerror="this.style.display='none'">
+  <div class="tagline">Soluções Estratégicas e Operacionais</div>
 </header>
 <div class="goldrule"></div>
 
 <div class="wrap">
 
   <div class="doc-head">
-    <div class="eyebrow">Relatório de Projeto · Consultoria ViDi</div>
+    <div class="eyebrow">Relatório de Projeto · Live Consultoria</div>
     <h1>Certificação CA (retardante a chamas)<br>Visual Work</h1>
     <div class="meta-line">Status consolidado do ClickUp e definições pendentes da 2ª reunião · Emitido em 27/07/2026</div>
   </div>
@@ -236,7 +234,7 @@
     <table>
       <thead><tr><th>Requisito</th><th>Cláusula</th><th>Responsável sugerido</th><th>Prazo</th><th>Prior.</th></tr></thead>
       <tbody>
-        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmwd" target="_blank">Informação documentada (criação, atualização, controle)</a><div class="note">Iniciar já a documentação com apoio de IA; tirar controles "da mão".</div></td><td><span class="clause">7.5</span></td><td>Cléber + ViDi</td><td>29/08/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmwd" target="_blank">Informação documentada (criação, atualização, controle)</a><div class="note">Iniciar já a documentação com apoio de IA; tirar controles "da mão".</div></td><td><span class="clause">7.5</span></td><td>Cléber + Live Consultoria</td><td>29/08/2026</td><td><span class="badge p-high">Alta</span></td></tr>
       </tbody>
     </table>
 
@@ -258,7 +256,7 @@
       <tbody>
         <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn12" target="_blank">Controle de saídas não conformes</a><div class="note">Itens duplicados/faltantes/trocados; notas de devolução.</div></td><td><span class="clause">8.7</span></td><td>Cirline</td><td>30/11/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
         <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn2h" target="_blank">Monitoramento, medição, análise e avaliação</a><div class="note">Controle financeiro 100%; KPIs de qualidade.</div></td><td><span class="clause">9.1</span></td><td>Cléber</td><td>30/11/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
-        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn3h" target="_blank">Auditoria interna</a><div class="note">Doc. para inicial; execução na fase de manutenção.</div></td><td><span class="clause">9.2</span></td><td>Luiz (ViDi)</td><td>15/12/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn3h" target="_blank">Auditoria interna</a><div class="note">Doc. para inicial; execução na fase de manutenção.</div></td><td><span class="clause">9.2</span></td><td>Luiz (Live Consultoria)</td><td>15/12/2026</td><td><span class="badge p-high">Alta</span></td></tr>
         <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn3t" target="_blank">Análise crítica pela direção</a><div class="note">Governança familiar; execução na fase de manutenção.</div></td><td><span class="clause">9.3</span></td><td>Cayro + Lanny</td><td>31/12/2026</td><td><span class="badge p-high">Alta</span></td></tr>
         <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn4d" target="_blank">Não conformidade e ação corretiva</a><div class="note">Análise de causa raiz das falhas de remessa.</div></td><td><span class="clause">10.2</span></td><td>Cléber</td><td>15/01/2027</td><td><span class="badge p-high">Alta</span></td></tr>
       </tbody>
@@ -287,7 +285,7 @@
   <section>
     <h2 class="sec">Envolvidos e contatos externos</h2>
     <ul class="clean">
-      <li><b>Equipe interna / consultoria:</b> Lanny (CEO / gerente do projeto), Cléber Donato (gestor tático), Luiz Portal (consultor ViDi), Cayro (direção operacional / decisor), Cirline "Cleia" (processo/produção), Camila (financeiro).</li>
+      <li><b>Equipe interna / consultoria:</b> Lanny (CEO / gerente do projeto), Cléber Donato (gestor tático), Luiz Portal (consultor Live Consultoria), Cayro (direção operacional / decisor), Cirline "Cleia" (processo/produção), Camila (financeiro).</li>
       <li><b>CLS Consulting — Claudeci:</b> especialista em CA FR; executaria documentação, OCP, laboratório e Ministério do Trabalho (proposta pendente).</li>
       <li><b>Fabricante do tecido FR (Jupiter / Cedrotec):</b> negociar o custeio dos reensaios de 20/40 meses conforme volume de compra (contatos citados: Gustavo, Egberto; feira FISP em outubro).</li>
       <li><b>Adriana Lima Segue (NIMASSEG):</b> entrada no Ministério do Trabalho — R$200/família.</li>
@@ -307,10 +305,12 @@
 
 <footer>
   <div class="wrap">
-    <div class="sig">VIDI<small>Ver antes de vencer</small></div>
-    <p style="margin-top:14px">Relatório de trabalho da consultoria ViDi · Projeto Certificação CA · Visual Work. Valores e prazos são estimativas da 2ª reunião (CLS Consulting) e se ajustam após as decisões de contratação, escopo e laboratório. Cronograma provisório na rota ITEX.</p>
+    <div class="sig">Live Consultoria<small>Soluções Estratégicas e Operacionais</small></div>
+    <p style="margin-top:14px">Relatório de trabalho da Live Consultoria · Projeto Certificação CA · Visual Work. Valores e prazos são estimativas da 2ª reunião (CLS Consulting) e se ajustam após as decisões de contratação, escopo e laboratório. Cronograma provisório na rota ITEX.</p>
+    <div class="developer-credit">Desenvolvido por Cléber Donato</div>
   </div>
 </footer>
 
 </body>
 </html>
+
