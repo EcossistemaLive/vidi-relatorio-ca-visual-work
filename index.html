@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViDi · Relatório do Projeto — Certificação CA · Visual Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#c9a84c; --gold-deep:#a8862f; --black:#0a0a0a; --charcoal:#3d3d3d;
+    --offwhite:#f5f0e8; --lightgray:#ebebeb; --paper:#fbf9f3; --line:#e0d8c8;
+    --ok:#5a7d4f; --ok-bg:#eef3e9; --warn:#b08529; --warn-bg:#f6efdd;
+    --urgent:#a23b2e; --urgent-bg:#f6e3df; --na:#8a8577;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--offwhite);color:var(--black);
+    font-family:'Roboto',system-ui,-apple-system,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,.serif{font-family:'Playfair Display',Georgia,serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:var(--gold-deep)}
+
+  header.brand{background:var(--black);color:var(--offwhite);padding:32px 0 26px;text-align:center}
+  header.brand .eagle{width:56px;height:56px}
+  header.brand .wordmark{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:.42em;
+    font-size:27px;text-indent:.42em;margin-top:10px}
+  header.brand .tagline{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:14px;margin-top:2px}
+  .goldrule{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+  .doc-head{padding:38px 0 6px;text-align:center}
+  .doc-head .eyebrow{color:var(--gold-deep);text-transform:uppercase;letter-spacing:.28em;font-size:11px;font-weight:700}
+  .doc-head h1{font-size:32px;margin:12px 0 8px;line-height:1.2}
+  .doc-head .meta-line{color:var(--charcoal);font-size:13.5px}
+
+  section{padding:26px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  h2.sec{font-size:23px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+  h2.sec .tag{font-size:12px;font-weight:700;color:#fff;background:var(--gold-deep);border-radius:5px;padding:2px 9px;font-family:'Roboto'}
+  .sec-sub{color:var(--charcoal);font-size:14px;margin:2px 0 18px}
+
+  p{font-size:14.5px;color:#25211a}
+  .lead{font-size:15.5px;color:var(--charcoal)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+  .card .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-deep);font-weight:700}
+  .card .v{font-family:'Playfair Display',serif;font-size:20px;margin-top:4px}
+  .card .d{font-size:12.5px;color:var(--charcoal);margin-top:2px}
+
+  table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--black);color:var(--offwhite);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+  tr:nth-child(even) td{background:var(--paper)}
+  td .clause{font-family:ui-monospace,monospace;font-weight:700;color:var(--gold-deep);font-size:11.5px}
+  .tk{font-weight:600}
+  .note{color:var(--charcoal);font-size:12.5px}
+
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;border-radius:20px;padding:2px 9px;border:1px solid;white-space:nowrap}
+  .p-urgent{color:var(--urgent);border-color:#d8b3ab;background:var(--urgent-bg)}
+  .p-high{color:var(--warn);border-color:#e3cf9c;background:var(--warn-bg)}
+  .p-normal{color:var(--ok);border-color:#c7d3bf;background:var(--ok-bg)}
+
+  .listtitle{font-family:'Playfair Display',serif;font-size:18px;margin:22px 0 2px;color:var(--black)}
+  .listtitle .n{color:var(--gold-deep);font-weight:700}
+  .listdesc{font-size:12.5px;color:var(--charcoal);margin:0 0 8px}
+
+  .callout{border-left:3px solid var(--gold);background:var(--paper);border-radius:0 6px 6px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#25211a}
+  .callout.dark{background:#141414;color:#d9d2c4;border-left-color:var(--gold)}
+  .callout.dark b{color:var(--offwhite)}
+  .callout.alert{border-left-color:var(--urgent);background:var(--urgent-bg)}
+  .callout b{color:var(--black)}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 4px}
+  .flow .step{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px}
+  .flow .step.key{border-color:var(--gold-deep);background:var(--warn-bg);font-weight:600}
+  .flow .arrow{color:var(--gold-deep);font-weight:700}
+
+  ul.clean{padding-left:18px;margin:8px 0}
+  ul.clean li{font-size:14px;margin:5px 0}
+
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .btns a{background:var(--black);color:var(--offwhite);text-decoration:none;border-radius:4px;padding:9px 16px;font-size:13px;font-weight:500}
+  .btns a.ghost{background:transparent;border:1px solid var(--black);color:var(--black)}
+
+  footer{background:var(--black);color:#b8b2a4;margin-top:30px;padding:30px 0;font-size:12.5px}
+  footer .sig{font-family:'Playfair Display',serif;letter-spacing:.35em;text-indent:.35em;color:var(--offwhite);font-size:17px;font-weight:600}
+  footer .sig small{display:block;font-style:italic;letter-spacing:.02em;text-indent:0;color:var(--gold);font-size:12px;margin-top:3px;font-weight:400}
+
+  @media print{
+    body{background:#fff}
+    header.brand{background:#fff;color:#000;border-bottom:2px solid var(--gold)}
+    header.brand .wordmark{color:#000}
+    th{background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    footer{background:#fff;color:#333} footer .sig{color:#000}
+    section{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="brand">
+  <img class="eagle" src="assets/vidi-simbolo.svg" alt="ViDi" onerror="this.style.display='none'">
+  <div class="wordmark">VIDI</div>
+  <div class="tagline">Ver antes de vencer</div>
+</header>
+<div class="goldrule"></div>
+
+<div class="wrap">
+
+  <div class="doc-head">
+    <div class="eyebrow">Relatório de Projeto · Consultoria ViDi</div>
+    <h1>Certificação CA (retardante a chamas)<br>Visual Work</h1>
+    <div class="meta-line">Status consolidado do ClickUp e definições pendentes da 2ª reunião · Emitido em 27/07/2026</div>
+  </div>
+
+  <!-- SUMÁRIO EXECUTIVO -->
+  <section>
+    <h2 class="sec">Sumário executivo</h2>
+    <p class="lead">Projeto de <b>renovação do Certificado de Aprovação (CA)</b> das vestimentas de proteção retardantes a chamas / arco elétrico da Visual Work (calça, camisa e macacão — tecido <b>Jupiter</b>, 3 famílias), sob a <b>Portaria 672</b>. Os CAs atuais (Macacão <b>50171</b>, Calça <b>50173</b>, Camisa <b>50174</b>) são <b>válidos até 02/2027</b> — esse vencimento é o prazo real do projeto. Como a empresa <b>não possui ISO 9001</b>, aplica-se a <b>Tabela 3</b> (requisitos mínimos do SGQ — "mini ISO 9001").</p>
+    <div class="cards">
+      <div class="card"><div class="k">Empresa</div><div class="v">Visual Work</div><div class="d">Confecção de uniformes FR · Goiânia-GO</div></div>
+      <div class="card"><div class="k">Cenário SGQ</div><div class="v">Tabela 3</div><div class="d">Sem ISO 9001:2015</div></div>
+      <div class="card"><div class="k">Prazo (melhor caso)</div><div class="v">15/fev/2027</div><div class="d">Rota ITEX · ~8 meses</div></div>
+      <div class="card"><div class="k">Investimento inicial</div><div class="v">~R$118 mil</div><div class="d">+ reensaios 20/40 meses (~R$26k cada)</div></div>
+    </div>
+    <div class="callout dark">
+      <b>Descoberta que reorienta o projeto (2ª reunião — CLS Consulting):</b> a <b>auditoria inicial exige apenas a documentação pronta</b>, não a implementação completa do SGQ. A implementação com evidências (rastreabilidade, ordens, preservação, bipagem) só é cobrada na <b>auditoria de manutenção (~12 meses)</b>. Isso permite <b>dividir o projeto em duas ondas</b>: (1) documentação + processo externo para emitir o CA rápido; (2) implementação do SGQ amadurecendo até a manutenção.
+    </div>
+    <div class="btns">
+      <a href="https://app.clickup.com/90171413405/v/l/f/901710069717" target="_blank">Abrir projeto no ClickUp</a>
+    </div>
+  </section>
+
+  <!-- CAMINHO CRÍTICO -->
+  <section>
+    <h2 class="sec">Caminho crítico até o CA</h2>
+    <p class="sec-sub">O prazo é dominado por prazos externos (laboratório, OCP e Ministério do Trabalho). As tarefas do SGQ (blocos A–D) alimentam principalmente a fase de manutenção.</p>
+    <div class="flow">
+      <span class="step key">Decisões (CLS/escopo/lab)</span><span class="arrow">→</span>
+      <span class="step">Insumos + Doc. técnica</span><span class="arrow">→</span>
+      <span class="step">Etiquetas + OCP</span><span class="arrow">→</span>
+      <span class="step key">Auditoria inicial + amostra</span><span class="arrow">→</span>
+      <span class="step">Laboratório (ITEX ~3m)</span><span class="arrow">→</span>
+      <span class="step">Validação + certificado OCP</span><span class="arrow">→</span>
+      <span class="step">NIMASSEG + Min. Trabalho (~60d)</span><span class="arrow">→</span>
+      <span class="step key">🏆 CA emitido (~15/02/2027)</span>
+    </div>
+    <p class="note">Rota nacional (alternativa): laboratório 6–7 meses → CA em ~11–12 meses. A escolha do laboratório está pendente (ver Decisões).</p>
+  </section>
+
+  <!-- PROPOSTA CLS -->
+  <section>
+    <h2 class="sec">Proposta CLS Consulting (recebida)</h2>
+    <p class="sec-sub">Proposta comercial e apuração de gastos enviadas pela CLS Consulting após a 2ª reunião. Pendente de decisão do Seu Cayro.</p>
+    <div class="cards">
+      <div class="card"><div class="k">Consultor / auditor líder</div><div class="v">Claudeci Pina</div><div class="d">Auditor Líder (Bureau Veritas) · Tecnólogo Industrial</div></div>
+      <div class="card"><div class="k">Investimento (consultoria)</div><div class="v">R$30.000</div><div class="d">R$5.000 entrada + 10× R$2.500 · sem impostos</div></div>
+      <div class="card"><div class="k">Objeto</div><div class="v">Renovação · 3 famílias</div><div class="d">Calça, Camisa e Macacão (tecido Jupiter)</div></div>
+      <div class="card"><div class="k">Execução documental</div><div class="v">20 dias corridos</div><div class="d">+ 3 dias auditoria interna + 2 acompanhando a OCP</div></div>
+    </div>
+    <p>O modelo é "a CLS entra e a empresa sai": elaboração documental de <b>todos os requisitos da Tabela 3</b> (7.1.5 a 10.2 + SAC/tratativa de reclamações) e da <b>documentação técnica</b> (memorial descritivo, desenho técnico, manual de instruções/uso, arte de etiquetas e de embalagens). Inclui auditoria interna do produto antes da certificação, acompanhamento da auditoria da OCP, dos laudos de laboratório e da emissão do CA junto ao Ministério do Trabalho (MTE).</p>
+    <div class="callout"><b>Não incluso na consultoria:</b> OCP, laboratório, NIMASSEG e as despesas de transporte, alimentação e hospedagem do consultor (por conta da Visual Work). Contato: claudeci@clsconsulti.com.br · (11) 98776-6550 · Guarulhos-SP.</div>
+  </section>
+
+  <!-- DECISÕES PENDENTES -->
+  <section>
+    <h2 class="sec"><span class="tag">Lista F</span> Decisões pendentes &amp; orçamento</h2>
+    <p class="sec-sub">Estas definições destravam o cronograma — a maioria depende do Seu Cayro. Enquanto não decididas, o cronograma assume a rota ITEX.</p>
+    <table>
+      <thead><tr><th>Decisão / item</th><th>Responsável</th><th>Prazo</th><th>Prioridade</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr39m" target="_blank">Avaliar proposta da CLS e decidir contratação</a></td><td>Cayro + Lanny</td><td>04/08/2026</td><td><span class="badge p-urgent">Urgente</span></td><td class="note">✅ Proposta recebida (R$30k: 5k + 10× R$2,5k). Ver seção "Proposta CLS Consulting". Exclui OCP/laboratório/viagem.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3a3" target="_blank">Definir escopo: 3 famílias ou só calça+camisa</a></td><td>Cayro</td><td>04/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Macacão só compensa com volume. Custo de OCP/lab é por família.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3an" target="_blank">Definir laboratório: ITEX ou nacionais</a></td><td>Cayro + Cléber</td><td>08/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">ITEX: rápido, euro à vista. Nacional: mais barato, pós-pago, mais lento.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3b1" target="_blank">Negociar com a Cedro o custeio dos reensaios</a></td><td>Lanny</td><td>30/09/2026</td><td><span class="badge p-normal">Normal</span></td><td class="note">Reensaios de 20/40 meses (~R$30k cada) pelo volume de tecido comprado.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3bq" target="_blank">Consolidar orçamento do CA (5 anos)</a></td><td>Cléber</td><td>08/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Cruzar com fluxo de caixa (empresa em aperto financeiro).</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="listtitle">Orçamento (3 famílias) — apuração de gastos CLS</h3>
+    <table>
+      <thead><tr><th>Item</th><th>Valor</th><th>Forma de pagamento</th></tr></thead>
+      <tbody>
+        <tr><td>Consultoria CLS</td><td>R$30.000</td><td>R$5.000 entrada + 10× R$2.500 (dia 10)</td></tr>
+        <tr><td>OCP (5 anos, com manutenções)</td><td>~R$60.000</td><td>R$12.000 (3×) + 40× R$1.200</td></tr>
+        <tr><td>Laboratório inicial — nacional</td><td>R$27.800</td><td>SENAI CETIQT R$18k + IEE/USP R$8k + LENCO R$1,8k · pós-laudo (SENAI/CETIIC em 3×)</td></tr>
+        <tr><td>Laboratório inicial — ITEX/AITEX (alternativa)</td><td>5.800€ (~R$36k)</td><td>Euro, à vista (antecipado) · ~3 meses</td></tr>
+        <tr><td>NIMASSEG (Animaseg / Adriana)</td><td>R$600</td><td>R$200/família</td></tr>
+        <tr><td><b>Subtotal inicial (rota nacional)</b></td><td><b>~R$118.400</b></td><td>—</td></tr>
+        <tr><td>Reensaio 20 meses</td><td>~R$26.000 (nac.) / 5.000€ (AITEX)</td><td>Recorrente — negociar com o fabricante do tecido</td></tr>
+        <tr><td>Reensaio 40 meses</td><td>~R$26.000 (nac.) / 5.000€ (AITEX)</td><td>Recorrente — negociar com o fabricante do tecido</td></tr>
+        <tr><td>Viagem/hospedagem (auditoria)</td><td>Variável</td><td>Por conta da empresa</td></tr>
+      </tbody>
+    </table>
+    <p class="note">A rota ITEX/AITEX encurta o laboratório para ~3 meses (pago em euro à vista), viabilizando o CA em ~fev/2027; a rota nacional é mais barata e pós-paga, mas leva 6–7 meses.</p>
+  </section>
+
+  <!-- PROCESSO EXTERNO -->
+  <section>
+    <h2 class="sec"><span class="tag">Lista G</span> Certificação CA — processo externo</h2>
+    <p class="sec-sub">Pipeline técnico/regulatório (Portaria 672). Cronograma provisório na rota ITEX.</p>
+    <table>
+      <thead><tr><th>Etapa</th><th>Prazo</th><th>Prioridade</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3bz" target="_blank">Enviar insumos à certificadora</a></td><td>15/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Lista de funcionários c/ cargos + vídeo panorâmico da fábrica (Lanny).</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3c6" target="_blank">Documentação técnica</a></td><td>25/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Memorial descritivo, desenho técnico, manual de instruções.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3ce" target="_blank">Atualizar arte das etiquetas</a></td><td>25/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Novas normas: NBR 16142, 16623, 13688, NR6, NR10.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3cw" target="_blank">🚩 Amostra reforçada + auditoria inicial + lacração</a></td><td>31/08/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Auditoria inicial = documental. Ocorre cedo, antes do laboratório.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3d3" target="_blank">Ensaios em laboratório (ITEX)</a></td><td>15/11/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Arco elétrico, fogo repentino, durabilidade de marcação, ergonomia.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3d6" target="_blank">Análise e validação dos laudos com a OCP</a></td><td>20/11/2026</td><td><span class="badge p-normal">Normal</span></td><td class="note">Revalidação de pontos específicos sem refazer todo o ensaio.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3da" target="_blank">Emissão de draft e certificado (OCP)</a></td><td>30/11/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">~15 dias após laudos validados.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3df" target="_blank">Entrada NIMASSEG + protocolo no Min. Trabalho</a></td><td>05/12/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Adriana Lima Segue (R$200/família).</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2gr3dn" target="_blank">Acompanhamento do Ministério do Trabalho</a></td><td>10/02/2027</td><td><span class="badge p-high">Alta</span></td><td class="note">~60 dias após protocolo (dezembro praticamente não anda).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- REQUISITOS SGQ -->
+  <section>
+    <h2 class="sec">Requisitos do SGQ (Tabela 3)</h2>
+    <p class="sec-sub">14 requisitos organizados em 4 blocos. Cada tarefa tem, no ClickUp, a explicação, a evidência exigida e um comentário 📌 com a orientação extraída das reuniões de diagnóstico. Documentação para a auditoria inicial; implementação/evidência para a auditoria de manutenção.</p>
+
+    <h3 class="listtitle"><span class="n">A ·</span> Recursos e Pessoas</h3>
+    <table>
+      <thead><tr><th>Requisito</th><th>Cláusula</th><th>Responsável sugerido</th><th>Prazo</th><th>Prior.</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmuf" target="_blank">Recursos de monitoramento e medição</a><div class="note">Etiqueta com código de barras + bipagem na expedição.</div></td><td><span class="clause">7.1.5</span></td><td>Cirline + Cléber</td><td>15/09/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmv4" target="_blank">Competência</a><div class="note">Rampagem 4–6 meses → meta 30 dias; Cirline sobrecarregada.</div></td><td><span class="clause">7.2</span></td><td>Cléber / RH</td><td>30/09/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmvx" target="_blank">Conscientização</a><div class="note">Pesquisa de clima + onboarding estruturado.</div></td><td><span class="clause">7.3</span></td><td>Cléber / Lanny</td><td>30/09/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="listtitle"><span class="n">B ·</span> Informação Documentada</h3>
+    <table>
+      <thead><tr><th>Requisito</th><th>Cláusula</th><th>Responsável sugerido</th><th>Prazo</th><th>Prior.</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmwd" target="_blank">Informação documentada (criação, atualização, controle)</a><div class="note">Iniciar já a documentação com apoio de IA; tirar controles "da mão".</div></td><td><span class="clause">7.5</span></td><td>Cléber + ViDi</td><td>29/08/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="listtitle"><span class="n">C ·</span> Operação</h3>
+    <table>
+      <thead><tr><th>Requisito</th><th>Cláusula</th><th>Responsável sugerido</th><th>Prazo</th><th>Prior.</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmxd" target="_blank">Planejamento e controle operacionais</a><div class="note">"Expedição cega"; mapear processos; integrar ERP; onboarding de projetos.</div></td><td><span class="clause">8.1</span></td><td>Cirline + Cléber</td><td>15/10/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmy9" target="_blank">Comunicação com o cliente</a><div class="note">"Armadilha B2C"; automação do atendimento com bot.</div></td><td><span class="clause">8.2.1</span></td><td>Lanny</td><td>30/10/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmz5" target="_blank">Processos/produtos providos externamente</a><div class="note">Qualificação de fornecedores e mão de obra externa de baixo custo.</div></td><td><span class="clause">8.4</span></td><td>Cayro</td><td>30/10/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcmzk" target="_blank">Produção e provisão de serviço</a><div class="note">Capacidade ociosa; antichama premium; rastreabilidade por lote.</div></td><td><span class="clause">8.5</span></td><td>Cirline</td><td>15/11/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn07" target="_blank">Liberação de produtos e serviços</a><div class="note">Bipagem antes da liberação; meta de falha zero na remessa.</div></td><td><span class="clause">8.6</span></td><td>Cirline</td><td>15/11/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="listtitle"><span class="n">D ·</span> Não Conformidades e Melhoria</h3>
+    <table>
+      <thead><tr><th>Requisito</th><th>Cláusula</th><th>Responsável sugerido</th><th>Prazo</th><th>Prior.</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn12" target="_blank">Controle de saídas não conformes</a><div class="note">Itens duplicados/faltantes/trocados; notas de devolução.</div></td><td><span class="clause">8.7</span></td><td>Cirline</td><td>30/11/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn2h" target="_blank">Monitoramento, medição, análise e avaliação</a><div class="note">Controle financeiro 100%; KPIs de qualidade.</div></td><td><span class="clause">9.1</span></td><td>Cléber</td><td>30/11/2026</td><td><span class="badge p-normal">Normal</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn3h" target="_blank">Auditoria interna</a><div class="note">Doc. para inicial; execução na fase de manutenção.</div></td><td><span class="clause">9.2</span></td><td>Luiz (ViDi)</td><td>15/12/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn3t" target="_blank">Análise crítica pela direção</a><div class="note">Governança familiar; execução na fase de manutenção.</div></td><td><span class="clause">9.3</span></td><td>Cayro + Lanny</td><td>31/12/2026</td><td><span class="badge p-high">Alta</span></td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcn4d" target="_blank">Não conformidade e ação corretiva</a><div class="note">Análise de causa raiz das falhas de remessa.</div></td><td><span class="clause">10.2</span></td><td>Cléber</td><td>15/01/2027</td><td><span class="badge p-high">Alta</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- GOVERNANÇA E MARCOS -->
+  <section>
+    <h2 class="sec"><span class="tag">Lista E</span> Governança &amp; Marcos</h2>
+    <table>
+      <thead><tr><th>Marco / item</th><th>Prazo</th><th>Prioridade</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcugv" target="_blank">🚩 Kickoff do projeto</a></td><td>05/08/2026</td><td><span class="badge p-urgent">Urgente</span></td><td class="note">Contém o comentário de atualização pós-2ª reunião.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuh6" target="_blank">Definir escopo do CA e contratar OCP</a></td><td>15/09/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Mercado "blindado" do retardante a chamas.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuhg" target="_blank">🚩 SGQ documentado (base pronta)</a></td><td>20/10/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Suficiente para a auditoria inicial.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuhn" target="_blank">🚩 Auditoria interna concluída</a></td><td>15/12/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Execução voltada à manutenção.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuhu" target="_blank">🚩 Análise crítica realizada</a></td><td>31/12/2026</td><td><span class="badge p-high">Alta</span></td><td class="note">Ata com entradas, saídas e decisões.</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuj7" target="_blank">🏆 CA emitido</a></td><td>15/02/2027</td><td><span class="badge p-urgent">Urgente</span></td><td class="note">Meta declarada: "em fevereiro ter o CA".</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcuj2" target="_blank">🚩 Auditoria de manutenção do SGQ</a></td><td>01/12/2027</td><td><span class="badge p-normal">Normal</span></td><td class="note">Foco em evidências: rastreabilidade (ponto crítico).</td></tr>
+        <tr><td class="tk"><a href="https://app.clickup.com/t/86e2fcujj" target="_blank">Rotina de pré-conselho / conselho gestor familiar</a></td><td>01/12/2026</td><td><span class="badge p-normal">Normal</span></td><td class="note">Papéis, organograma e tema sucessão.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CONTATOS -->
+  <section>
+    <h2 class="sec">Envolvidos e contatos externos</h2>
+    <ul class="clean">
+      <li><b>Equipe interna / consultoria:</b> Lanny (CEO / gerente do projeto), Cléber Donato (gestor tático), Luiz Portal (consultor ViDi), Cayro (direção operacional / decisor), Cirline "Cleia" (processo/produção), Camila (financeiro).</li>
+      <li><b>CLS Consulting — Claudeci:</b> especialista em CA FR; executaria documentação, OCP, laboratório e Ministério do Trabalho (proposta pendente).</li>
+      <li><b>Fabricante do tecido FR (Jupiter / Cedrotec):</b> negociar o custeio dos reensaios de 20/40 meses conforme volume de compra (contatos citados: Gustavo, Egberto; feira FISP em outubro).</li>
+      <li><b>Adriana Lima Segue (NIMASSEG):</b> entrada no Ministério do Trabalho — R$200/família.</li>
+      <li><b>OCP</b> (organismo certificador de produto) e <b>laboratórios</b>: ITEX (Espanha) ou SENAI/CETIIC, USP, IPT (nacionais).</li>
+      <li><b>Dr. Luciano</b> (advogado tributarista) — frente financeira/jurídica, fora do escopo do CA.</li>
+    </ul>
+    <div class="callout alert">
+      <b>Risco a monitorar — rastreabilidade:</b> na auditoria de manutenção, a OCP compara o volume vendido com as notas fiscais de tecido comprado. Divergência (produzir mais do que o tecido comprado comporta) leva à <b>suspensão do CA</b>. É o mecanismo da Portaria 672 contra a "picaretagem" de mercado — e reforça a importância dos blocos A–D.
+    </div>
+  </section>
+
+  <div class="btns">
+    <a href="https://app.clickup.com/90171413405/v/l/f/901710069717" target="_blank">Abrir projeto no ClickUp</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">VIDI<small>Ver antes de vencer</small></div>
+    <p style="margin-top:14px">Relatório de trabalho da consultoria ViDi · Projeto Certificação CA · Visual Work. Valores e prazos são estimativas da 2ª reunião (CLS Consulting) e se ajustam após as decisões de contratação, escopo e laboratório. Cronograma provisório na rota ITEX.</p>
+  </div>
+</footer>
+
+</body>
+</html>
